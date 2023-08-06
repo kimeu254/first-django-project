@@ -62,3 +62,15 @@ def destroy_task(request, pk):
 
     return render(request, 'delete.html', {'task': task})
 
+
+def mark_complete(request, pk):
+
+    task = Task.objects.get(id=pk)
+
+    if request.method == "POST":
+        task.completed = True
+        task.save()
+        return redirect('home')
+
+    return render(request, 'complete.html', {'task': task})
+

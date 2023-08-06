@@ -30,7 +30,7 @@
                 <div class="">
                     <div class="mb-2">
                         {% if not t.completed  %}
-                            <a href="" class="btn btn-success">
+                            <a href="{% url 'complete.task' t.id %}" class="btn btn-success">
                                 <i class="bi bi-check"></i>
                             </a>
                         {% endif %}

@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow border-0">
+                    <div class="card-header">
+                        <h5>Delete Task</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="row" action="" method="post">
+                            {% csrf_token %}
+                            <div class="col-12 mb-3">
+                                <p>Mark <span class="text-primary">{{ task.title }}</span> as complete</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <button class="btn btn-success">Confirm</button>
+                                <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
