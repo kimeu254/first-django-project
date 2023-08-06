@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow border-0">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between">
+                            <h4>{{ task.title }}</h4>
+                            <p class="text-muted">
+                                Created on: <span class="text-dark">{{ task.date_created }}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <h6 class="fw-lighter">Description</h6>
+                            <p class="text-muted">
+                                {{ task.description }}
+                            </p>
+                        </div>
+                        <div>
+                            {% if task.completed %}
+                                <span class="badge bg-success">Complete</span>
+                            {% else %}
+                                <span class="badge bg-warning">
+                                    Due date: {{ task.due_date }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

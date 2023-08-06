@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow border-0">
+                    <div class="card-header">
+                        <h5>Create Task</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="row" action="" method="post">
+                            {% csrf_token %}
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Title:</label>
+                                {{ form.title }}
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Description:</label>
+                                {{ form.description }}
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Due Date:</label>
+                                {{ form.due_date }}
+                            </div>
+                            <div class="col-12 mb-3">
+                                <button class="btn btn-success" type="submit" value="Submit">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

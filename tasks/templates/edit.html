@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow border-0">
+                    <div class="card-header">
+                        <h5>Create Task</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="row" action="{% url 'update.task' task.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Title:</label>
+                                <input type="text" class="form-control" name="title" value="{{ task.title }}">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Title:</label>
+                                <textarea class="form-control" rows="3" name="description">{{ task.description }}
+                                </textarea>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Due Date:</label>
+                                <input type="date" class="form-control" name="due_date" value="{{ task.due_date }}">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <button class="btn btn-success">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

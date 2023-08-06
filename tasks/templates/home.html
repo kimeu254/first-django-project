@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">All</a></li>
+                <li><a class="dropdown-item" href="#">Complete</a></li>
+                <li><a class="dropdown-item" href="#">Incomplete</a></li>
+              </ul>
+            </div>
+            <div>
+                <a href="{% url 'new.task' %}" class="btn btn-success">
+                    New Task
+                </a>
+            </div>
+        </div>
+        <div class="my-5">
+            {% for t in all_tasks %}
+            <div class="d-flex justify-content-between">
+                <div class="">
+                    <a href="{% url 'show.task' t.id %}" class="">
+                        {{ t.title }}
+                    </a>
+                </div>
+                <div class="">
+                    <div class="mb-2">
+                        {% if not t.completed  %}
+                            <a href="" class="btn btn-success">
+                                <i class="bi bi-check"></i>
+                            </a>
+                        {% endif %}
+                        <a href="{% url 'edit.task' t.id %}" class="btn btn-info">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a href="{% url 'delete.task' t.id %}" class="btn btn-danger">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="text-muted">{{ t.date_created }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
